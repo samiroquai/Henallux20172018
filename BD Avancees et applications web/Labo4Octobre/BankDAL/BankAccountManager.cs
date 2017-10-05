@@ -4,13 +4,24 @@ using System.Configuration;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace BankDAL
 {
     public class BankAccountManager
     {
-
+        private string _managerName;
+        private int _idleTimeInSeconds=0;
+        private IOperationLogger _logger=null;
+        private System.Data.IsolationLevel _isolationLevel;
+        public BankAccountManager(int idleTimeInSeconds=0, string managerName=null, IOperationLogger logger=null, System.Data.IsolationLevel isolationLevel=System.Data.IsolationLevel.ReadCommitted)
+        {
+            _idleTimeInSeconds=idleTimeInSeconds;
+            _managerName=managerName;
+            _logger=logger;
+            _isolationLevel=isolationLevel;
+        }
         public void SupprimerComptes()
         { 
             using (SqlConnection cn = GetDatabaseConnection())
@@ -40,34 +51,53 @@ namespace BankDAL
             using (SqlConnection cn = GetDatabaseConnection())
             {
                 cn.Open();
-                
+                Log("Transaction démarrée. Niveau d'isolation: "+_isolationLevel);
+                using(SqlTransaction tn=cn.BeginTransaction(_isolationLevel))
+                {
                     try
                     {
-                        DebiterDe(montantATransferer, ibanOrigine, cn);
-                        CrediterDe(montantATransferer, ibanDestination, cn);
+                        DebiterDe(montantATransferer, ibanOrigine, cn, tn);
+                        if(_idleTimeInSeconds>0)
+                        Thread.Sleep(TimeSpan.FromSeconds(_idleTimeInSeconds));
+                        CrediterDe(montantATransferer, ibanDestination, cn, tn);
+                        tn.Commit();
+                    }
+                    catch
+                    {
+                        tn.Rollback();
+                        Log("Erreur lors de la transaction opérée par "+_managerName+". Annulation de celle-ci.");
+                        throw;
                     }
                     finally
                     {
                         cn.Close();
                     }
-                
+                }
             }
         }
 
-        private void CrediterDe(int montantAAjouter, string iban, SqlConnection cn)
+        private void CrediterDe(int montantAAjouter, string iban, SqlConnection cn, SqlTransaction tn)
         {
-            var command = new SqlCommand("UPDATE [CompteEnBanque] SET [Solde]=[Solde]+@montantAAjouter WHERE [IBAN]=@iban", cn);
+            var command = new SqlCommand("UPDATE [CompteEnBanque] SET [Solde]=[Solde]+@montantAAjouter WHERE [IBAN]=@iban", cn,tn);
             command.Parameters.AddWithValue("@montantAAjouter", montantAAjouter);
             command.Parameters.AddWithValue("@iban", iban);
             ExecuterRequeteEtVerifierImpact(command);
+            Log("Compte crédité par "+_managerName);
         }
 
-        private void DebiterDe(int montantARetirer, string iban, SqlConnection cn)
+        private void DebiterDe(int montantARetirer, string iban, SqlConnection cn, SqlTransaction tn)
         {
-            var command = new SqlCommand("UPDATE [CompteEnBanque] SET [Solde]=[Solde]-@montantARetirer WHERE [IBAN]=@iban", cn);
+            var command = new SqlCommand("UPDATE [CompteEnBanque] SET [Solde]=[Solde]-@montantARetirer WHERE [IBAN]=@iban", cn, tn);
             command.Parameters.AddWithValue("@montantARetirer", montantARetirer);
             command.Parameters.AddWithValue("@iban", iban);
             ExecuterRequeteEtVerifierImpact(command);
+            Log("Compte débité par "+_managerName);
+        }
+
+        private void Log(string message)
+        {
+            if(_logger!=null)
+                _logger.Log(message);
         }
 
         private static void ExecuterRequeteEtVerifierImpact(SqlCommand command)
@@ -79,8 +109,8 @@ namespace BankDAL
 
         public static SqlConnection GetDatabaseConnection()
         {
-            throw new Exception("Initialisez connectionString avec une chaîne valable :)");
-            string connectionString=null;
+            throw new Exception("N'oubliez pas d'insérer votre connection string :)");
+            string connectionString=@"*********";
             return new SqlConnection(connectionString);
         }
 
