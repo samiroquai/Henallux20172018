@@ -121,7 +121,7 @@ namespace BankDAL
                 connection.Open();
                 var command = new SqlCommand("SELECT [Solde] FROM [CompteEnBanque] WHERE [IBAN]=@iban", connection);
                 command.Parameters.AddWithValue("@iban", iban);
-                var solde = (double)command.ExecuteScalar();
+                var solde = (decimal)command.ExecuteScalar();
                 connection.Close();
                 return Convert.ToDouble(solde);
             }
