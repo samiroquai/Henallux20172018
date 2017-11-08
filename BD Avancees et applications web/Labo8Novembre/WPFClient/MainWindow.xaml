@@ -1,0 +1,65 @@
+﻿<Window x:Class="WPFClient.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:xceed="clr-namespace:Xceed.Wpf.Toolkit;assembly=Xceed.Wpf.Toolkit"
+        Title="Banque root" Height="375" Width="800"
+        DataContext="{Binding Source={StaticResource Locator}, Path=Main}">
+    <xceed:BusyIndicator IsBusy="{Binding IsBusy}">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+            
+                <TextBlock FontSize="40" FontWeight="Bold">Créditer un compte client</TextBlock>
+                <xceed:IconButton Command="{Binding RefreshCustomerCommand}" Height="40" HorizontalAlignment="Right">
+                    <xceed:IconButton.Icon>
+                        <Image Source="Assets/RefreshIcon.png"></Image>
+                    </xceed:IconButton.Icon>
+                </xceed:IconButton>
+            
+            <Grid x:Name="Formulaire" Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="25"></RowDefinition>
+                    <RowDefinition Height="25"></RowDefinition>
+                    <RowDefinition Height="25"></RowDefinition>
+                    <RowDefinition Height="25"></RowDefinition>
+                    <RowDefinition Height="25"></RowDefinition>
+                    <RowDefinition Height="25"></RowDefinition>
+                    <RowDefinition Height="25"></RowDefinition>
+                    <RowDefinition Height="25"></RowDefinition>
+                    <RowDefinition Height="25"></RowDefinition>
+                    <RowDefinition Height="25"></RowDefinition>
+                    <RowDefinition Height="25"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Row="0" Grid.Column="0" Text="Id"></TextBlock>
+                <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding Customer.Id}"></TextBlock>
+                <TextBlock Grid.Row="1" Grid.Column="0" Text="Nom"></TextBlock>
+                <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Customer.Name}"></TextBlock>
+                <TextBlock Grid.Row="2" Grid.Column="0" Text="Adresse"></TextBlock>
+                <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding Customer.AddressLine1}"></TextBlock>
+                <TextBlock Grid.Row="3" Grid.Column="0" Text="Code postal"></TextBlock>
+                <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding Customer.PostCode}"></TextBlock>
+                <TextBlock Grid.Row="4" Grid.Column="0" Text="Ville"></TextBlock>
+                <TextBlock Grid.Row="4" Grid.Column="1" Text="{Binding Customer.City}"></TextBlock>
+                <TextBlock Grid.Row="5" Grid.Column="0" Text="Pays"></TextBlock>
+                <TextBlock Grid.Row="5" Grid.Column="1" Text="{Binding Customer.Country}"></TextBlock>
+                <TextBlock Grid.Row="6" Grid.Column="0" Text="Remarque"></TextBlock>
+                <TextBlock Grid.Row="6" Grid.Column="1" Text="{Binding Customer.Remark}"></TextBlock>
+                <TextBlock Grid.Row="7" Grid.Column="0" Text="Solde actuel"></TextBlock>
+                <TextBlock Grid.Row="7" Grid.Column="1" Text="{Binding Customer.AccountBalance, StringFormat={}{0:C}}"></TextBlock>
+                <TextBlock Grid.Row="8" Grid.Column="0" Text="Ajouter au compte"></TextBlock>
+                <xceed:DoubleUpDown Grid.Row="8" Grid.Column="1" x:Name="MontantAAjouterAuCompte" Minimum="0.00" Maximum="1000000" Value="{Binding AmountToAddToBalance, Mode=TwoWay}"></xceed:DoubleUpDown>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="9" Grid.ColumnSpan="2">
+                    <Button Content="Sauvegarder" Command="{Binding SaveChangesCommand}"></Button>
+                </StackPanel>
+                <TextBlock Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="2" Foreground="Red" FontWeight="Bold" Text="{Binding ErrorMessage}"></TextBlock>
+            </Grid>
+        </Grid>
+    </xceed:BusyIndicator>
+</Window>
