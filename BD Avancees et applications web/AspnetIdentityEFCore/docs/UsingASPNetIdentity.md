@@ -373,12 +373,12 @@ namespace WebApiJwtAuthDemo.Controllers
 ```
 Compilez et lancez votre web api. Testez ensuite à l'aide de votre debugger HTTP préféré la méthode POST de votre controller JWT. Le résultat devrait ressembler à celui ci-dessous. 
 
-![Images/RecuperationTokenFonctionnelle.png](Docs/Images/RecuperationImageFonctionnelle.png)
+![Images/RecuperationTokenFonctionnelle.png](Images/RecuperationImageFonctionnelle.png)
 
 
 Ce token est un token JWT. Il contient des informations relatives à l'utilisateur est peut être décodé. Exemple ci-dessous. Une signature (créée à l'aide de la SecretKey déclarée plus tôt dans ce tutoriel) permet au serveur de le valider lorsqu'une requête HTTP est reçue. Ci-dessous, le contenu du token retourné par votre Controller.
 
-![Images/DecodageDuJWT.JPG](Docs/Images/DecodageDuJWT.JPG)
+![Images/DecodageDuJWT.JPG](Images/DecodageDuJWT.JPG)
 
 Le token contient entre autres informations:
 - Le User name (samiroquai)
@@ -386,7 +386,7 @@ Le token contient entre autres informations:
 
 Pour confirmation, vous pouvez regarder dans la DB les rôles conférés aux utilisateurs.
 
-![Images/ContenuDeLaDb.JPG](Docs/Images/ContenuDeLaDb.JPG)
+![Images/ContenuDeLaDb.JPG](Images/ContenuDeLaDb.JPG)
 
 Maintenant que vous savez ce que le token contient, si vous vous posez des questions quant à sa constitution, si vous souhaitez y rajouter des informations, rendez-vous dans la méthode Post de votre JwtController. C'est là que les claims sont créées, puis ajoutées au JWT. 
 
