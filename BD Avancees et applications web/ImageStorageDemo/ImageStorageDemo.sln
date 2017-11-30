@@ -1,0 +1,62 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageStorageDemo", "ImageStorageDemo\ImageStorageDemo.csproj", "{82918818-25A5-44D8-9AE0-D865461C7E5E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MySmartCityWebApi", "MySmartCityWebApi\MySmartCityWebApi.csproj", "{801DA07F-4979-409D-8907-4BB6A2964D3D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|ARM = Debug|ARM
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|ARM = Release|ARM
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{82918818-25A5-44D8-9AE0-D865461C7E5E}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{82918818-25A5-44D8-9AE0-D865461C7E5E}.Debug|ARM.ActiveCfg = Debug|ARM
+		{82918818-25A5-44D8-9AE0-D865461C7E5E}.Debug|ARM.Build.0 = Debug|ARM
+		{82918818-25A5-44D8-9AE0-D865461C7E5E}.Debug|ARM.Deploy.0 = Debug|ARM
+		{82918818-25A5-44D8-9AE0-D865461C7E5E}.Debug|x64.ActiveCfg = Debug|x64
+		{82918818-25A5-44D8-9AE0-D865461C7E5E}.Debug|x64.Build.0 = Debug|x64
+		{82918818-25A5-44D8-9AE0-D865461C7E5E}.Debug|x64.Deploy.0 = Debug|x64
+		{82918818-25A5-44D8-9AE0-D865461C7E5E}.Debug|x86.ActiveCfg = Debug|x86
+		{82918818-25A5-44D8-9AE0-D865461C7E5E}.Debug|x86.Build.0 = Debug|x86
+		{82918818-25A5-44D8-9AE0-D865461C7E5E}.Debug|x86.Deploy.0 = Debug|x86
+		{82918818-25A5-44D8-9AE0-D865461C7E5E}.Release|Any CPU.ActiveCfg = Release|x86
+		{82918818-25A5-44D8-9AE0-D865461C7E5E}.Release|ARM.ActiveCfg = Release|ARM
+		{82918818-25A5-44D8-9AE0-D865461C7E5E}.Release|ARM.Build.0 = Release|ARM
+		{82918818-25A5-44D8-9AE0-D865461C7E5E}.Release|ARM.Deploy.0 = Release|ARM
+		{82918818-25A5-44D8-9AE0-D865461C7E5E}.Release|x64.ActiveCfg = Release|x64
+		{82918818-25A5-44D8-9AE0-D865461C7E5E}.Release|x64.Build.0 = Release|x64
+		{82918818-25A5-44D8-9AE0-D865461C7E5E}.Release|x64.Deploy.0 = Release|x64
+		{82918818-25A5-44D8-9AE0-D865461C7E5E}.Release|x86.ActiveCfg = Release|x86
+		{82918818-25A5-44D8-9AE0-D865461C7E5E}.Release|x86.Build.0 = Release|x86
+		{82918818-25A5-44D8-9AE0-D865461C7E5E}.Release|x86.Deploy.0 = Release|x86
+		{801DA07F-4979-409D-8907-4BB6A2964D3D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{801DA07F-4979-409D-8907-4BB6A2964D3D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{801DA07F-4979-409D-8907-4BB6A2964D3D}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{801DA07F-4979-409D-8907-4BB6A2964D3D}.Debug|ARM.Build.0 = Debug|Any CPU
+		{801DA07F-4979-409D-8907-4BB6A2964D3D}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{801DA07F-4979-409D-8907-4BB6A2964D3D}.Debug|x64.Build.0 = Debug|Any CPU
+		{801DA07F-4979-409D-8907-4BB6A2964D3D}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{801DA07F-4979-409D-8907-4BB6A2964D3D}.Debug|x86.Build.0 = Debug|Any CPU
+		{801DA07F-4979-409D-8907-4BB6A2964D3D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{801DA07F-4979-409D-8907-4BB6A2964D3D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{801DA07F-4979-409D-8907-4BB6A2964D3D}.Release|ARM.ActiveCfg = Release|Any CPU
+		{801DA07F-4979-409D-8907-4BB6A2964D3D}.Release|ARM.Build.0 = Release|Any CPU
+		{801DA07F-4979-409D-8907-4BB6A2964D3D}.Release|x64.ActiveCfg = Release|Any CPU
+		{801DA07F-4979-409D-8907-4BB6A2964D3D}.Release|x64.Build.0 = Release|Any CPU
+		{801DA07F-4979-409D-8907-4BB6A2964D3D}.Release|x86.ActiveCfg = Release|Any CPU
+		{801DA07F-4979-409D-8907-4BB6A2964D3D}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
