@@ -1,0 +1,58 @@
+(DT_STR,20,1252)((DATEPART("DW",[DateEntree]) == 7) ? "SUNDAY" : 
+(DATEPART("DW",[DateEntree]) == 1) ? "MONDAY" : 
+(DATEPART("DW",[DateEntree]) == 2) ? "TUESDAY" : 
+(DATEPART("DW",[DateEntree]) == 3) ? "WEDNESDAY" : 
+(DATEPART("DW",[DateEntree]) == 4) ? "THURSDAY" : 
+(DATEPART("DW",[DateEntree]) == 5) ? "FRIDAY" : 
+(DATEPART("DW",[DateEntree]) == 6) ? "SATURDAY" : "NULL")
+
+(DT_STR,20,1252)((DATEPART("DW",[DateEntree]) == 7) ? "DIMANCHE" : 
+(DATEPART("DW",[DateEntree]) == 1) ? "LUNDI" : 
+(DATEPART("DW",[DateEntree]) == 2) ? "MARDI" : 
+(DATEPART("DW",[DateEntree]) == 3) ? "MERCREDI" : 
+(DATEPART("DW",[DateEntree]) == 4) ? "JEUDI" : 
+(DATEPART("DW",[DateEntree]) == 5) ? "VENDREDI" : 
+(DATEPART("DW",[DateEntree]) == 6) ? "SAMEDI" : "NULL")
+
+(DT_STR,20,1252)((MONTH([DateEntree]) == 12) ? "DECEMBER" : 
+(MONTH([DateEntree]) == 11) ? "NOVEMBER" : 
+(MONTH([DateEntree]) == 10) ? "OCTOBER" : 
+(MONTH([DateEntree]) == 9) ? "SEPTEMBER" : 
+(MONTH([DateEntree]) == 8) ? "AUGUST" : 
+(MONTH([DateEntree]) == 7) ? "JULY" : 
+(MONTH([DateEntree]) == 6) ? "JUNE" : 
+(MONTH([DateEntree]) == 5) ? "MAY" : 
+(MONTH([DateEntree]) == 4) ? "APRIL" : 
+(MONTH([DateEntree]) == 3) ? "MARCH" : 
+(MONTH([DateEntree]) == 2) ? "FEBRUARY" : 
+(MONTH([DateEntree]) == 1) ? "JANUARY" : "NULL")
+
+(DT_STR,20,1252)((MONTH([DateEntree]) == 12) ? "DECEMBRE" : 
+(MONTH([DateEntree]) == 11) ? "NOVEMBRE" : 
+(MONTH([DateEntree]) == 10) ? "OCTOBRE" : 
+(MONTH([DateEntree]) == 9) ? "SEPTEMBRE" : 
+(MONTH([DateEntree]) == 8) ? "AOUT" : 
+(MONTH([DateEntree]) == 7) ? "JUILLET" : 
+(MONTH([DateEntree]) == 6) ? "JUIN" : 
+(MONTH([DateEntree]) == 5) ? "MAI" : 
+(MONTH([DateEntree]) == 4) ? "AVRIL" : 
+(MONTH([DateEntree]) == 3) ? "MARS" : 
+(MONTH([DateEntree]) == 2) ? "FEVRIER" : 
+(MONTH([DateEntree]) == 1) ? "JANVIER" : "NULL")
+
+
+DATE-KEY
+(DT_I4)(((DT_WSTR,4)YEAR([DateEntree])) + Right("0" + (DT_STR,4,1252) DatePart("m",[DateEntree]),2) + Right("0" + (DT_STR,4,1252) DatePart("d",[DateEntree]),2))
+
+
+
+(DT_I4)(((DT_WSTR,4)YEAR([CreationDate])) + Right("0" + (DT_STR,4,1252) DatePart("m",[CreationDate]),2) + Right("0" + (DT_STR,4,1252) DatePart("d",[CreationDate]),2))
+
+(DT_I4)(((DT_WSTR,4)YEAR([ClosedDate])) + Right("0" + (DT_STR,4,1252) DatePart("m",[ClosedDate]),2) + Right("0" + (DT_STR,4,1252) DatePart("d",[ClosedDate]),2))
+
+-- jour de la semaine
+DATEPART("dw",DateEntree)
+-- jour de l'année
+DATEPART("dy",DateEntree)
+-- numéro de semaine
+DATEPART("wk",DateEntree)
