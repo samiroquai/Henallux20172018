@@ -488,11 +488,17 @@ Pour que ce code fonctionne, vous devez configurer votre API afin qu'elle intèg
         }
 ```
 
-Compilez et lancez votre API. Récupérez un token frais (voir précédemment). Tentez ensuite d'appeler une méthode protégée d'un de vos controllers en passant ce token dans les headers de la requête HTTP (voir précédemment). Testez en modifiant légèrement le token également afin de vous assurer que ça ne fonctionne pas.
+Compilez et lancez votre API. Récupérez un token frais (voir précédemment). Tentez ensuite d'appeler une méthode protégée d'un de vos controllers en passant ce token dans les headers de la requête HTTP (voir précédemment). Testez en modifiant légèrement le token (supprimer une lettre par exemple) également afin de vous assurer que ça ne fonctionne pas.
+
+Votre token aura une durée de vie de 300 secondes par défaut. Laissez cette durée de vie courte dans un premier temps pour tester l'identification et l'autorisation. Ensuite, afin d'être plus relax pour développer votre application, augmentez la durée de vie du token. Cherchez la propriété ValidFor sur la classe JwtIssuerOptions.
+
+Il ne vous est pas demandé de gérer les cas d'expiration du token dans vos applications pour le projet Smart City. 
 
 ## Pour finir
 
 Vous êtes perdu? Examinez le code du projet web api ProjectUsingDbFirst. Ajoutez les mêmes références (voir fichier csproj) à votre projet. Comparez votre fichier __startup.cs__ avec celui du projet de référence. Regardez dans la classe __JwtController__ comment elle fonctionne. Regardez dans le __ValuesController__ comment protéger un controller à l'aide de l'attribut __Authorize__. Si certaines méthodes d'un controller doivent être publiques, décorez-les avec __AllowAnonymous__.
+
+
 
 ## Ressources
 https://blogs.msdn.microsoft.com/webdev/2017/04/06/jwt-validation-and-authorization-in-asp-net-core/
@@ -506,3 +512,5 @@ https://jwt.io/
 https://github.com/aspnet/Security/issues/1310
 
 https://github.com/aspnet/Security/issues/1338
+
+

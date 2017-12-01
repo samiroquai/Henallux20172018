@@ -269,10 +269,6 @@ ON DELETE CASCADE
 
 ALTER TABLE [dbo].[AspNetUserTokens] CHECK CONSTRAINT [FK_AspNetUserTokens_AspNetUsers_UserId]
 
-USE [master]
-
-ALTER DATABASE [apsnetidentitydemo] SET  READ_WRITE 
-
 
 ```
 Créez une classe dans votre projet qui sera nommée ApplicationUser. Cette classe représentera un utilisateur de votre système.
