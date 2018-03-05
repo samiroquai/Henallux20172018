@@ -1,0 +1,17 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{159641D6-6404-4A2A-AE62-294DE0FE8301}") = "ETL.STO.ImportDateEtPosts", "ETL.Demo.1\ETL.STO.ImportDateEtPosts.dtproj", "{93D772D1-B705-4F68-99CC-AF85351C8264}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Development|Default = Development|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{93D772D1-B705-4F68-99CC-AF85351C8264}.Development|Default.ActiveCfg = Development
+		{93D772D1-B705-4F68-99CC-AF85351C8264}.Development|Default.Build.0 = Development
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
