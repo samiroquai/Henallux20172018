@@ -1,0 +1,34 @@
+---*OED - 2017-2018 - Série 2 - Ex 2
+module(ObtenirOeuvre;;refOeuvre, titreOeuvre, numSalleOeuvre)
+ptrSalle=pDebSalle
+do while(ptrSalle!=NILL AND ptrSalle->numSalle<numSalleOeuvre)
+ptrSalle=ptrSalle->pSalleSuive
+enddo
+if(ptrSalle==NIL OR ptrSalle->numSalle>numSalleOeuvre)
+Sortir "Salle inexistante"
+else
+ptrOeuvre=ptrSalle->pDebOeuvres
+ptrOeuvrePrec = NIL
+do while(ptrOeuvre!=NIL AND ptrOeuvre->ref<refOeuvre)
+ptrOeuvrePrec = ptrOeuvre
+ptrOeuvre=ptrOeuvre->pOeuvreSuiv
+enddo
+if(ptrOeuvre!=NIL AND ptrOeuvre->ref==refOeuvre)
+Sortir "Oeuvre déjà présente"
+else
+ptrNouvOeuvre=adresse nouveau chainon oeuvre
+if(ptrNouvOeuvre=NIL)
+Sortir "Plus d'espace mémoire"
+else
+garnir ptrNouvOeuvre
+ptrNouvOeuvre.pOeuvreSuiv = ptrOeuvre
+ptrSalle->nbOeuvres++
+if(ptrOeuvre = ptrSalle->pDebOeuvres)
+ptrSalle->pDebOeuvres=ptrNouvOeuvre
+else
+ptrOeuvrePrec->pOeuvreSuiv = ptrNouvOeuvre
+endif
+endif
+endif
+endif
+------

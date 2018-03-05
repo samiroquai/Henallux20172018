@@ -1,0 +1,61 @@
+---*
+nbClients = 0
+do while (iOuvrier<20)
+paragraphe(Initialisation Ouvrier)
+do while(iOuvrier<20 AND ouvrierSauve = tabOuvriers[iOuvrier].nom)
+paragraphe(Comptabilisation client)
+paragraphe(Traitement ouvrier)
+iOuvrier++
+enddo
+paragraphe(Cloture Ouvrier)
+enddo
+paragraphe(Cloture generale)
+------
+
+---*Initialisation ouvrier
+ouvrierSauve = tabOuvriers[iOuvrier].nom
+totalHeures = 0
+Sortir ouvrierSauve
+------
+
+---*Comptabilisation client
+iClient = 0
+do while (iClient < nbClients AND tabClients[iClient].nom<tabOuvriers[iOuvrier].nomClient)
+iClient++
+enddo
+if(iClient==nbClients OR tabClients[iClient].nom>tabOuvriers[iOuvrier].nomClient)
+// insertion avec décalage => comme vu précédemment, laissé pour exercice
+tabClients[iClient].nbOuvriers = 1
+tabClients[iClient].tabOuvriers[0] = ouvrierSauve
+nbClients++
+else
+tabClients[iClient].tabOuvriers[tabClients[iClient].nbOuvriers] = ouvrierSauve
+tabClients[iClient].nbOuvriers++
+endif
+Sortir tabOuvriers[iOuvrier].nomClient
+------
+
+---*Traitement ouvrier
+iJourSemaine = 0
+do while(iJourSemaine < 5)
+totalHeures+=tabOuvriers[iOuvrier].tabHeuresJour[iJourSemaine]
+iJourSemaine++
+enddo
+------
+
+---*Cloture ouvrier
+Sortir totalHeures
+------
+
+---*Cloture générale
+iClient = 0
+do while(iClient < nbClients)
+Sortir tabClients[iClient].nom
+iOuvrierClient = 0
+do while(iOuvrierClient < tabClients[iClient].nbOuvriers)
+Sortir tabClients[iClient].tabOuvriers[iOuvrierClient]
+iOuvrierClient++
+enddo
+iClient++
+enddo
+------

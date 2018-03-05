@@ -1,0 +1,42 @@
+---*OED - 2017-2018 - Série 2 - Ex 1
+ptr = pDeb
+do while (ptr!=NIL)
+module(InitClient;;)
+do while(ptr != NIL AND numCarteSauve=ptr->numCarte)
+module(InitArticle;;)
+do while(ptr != NIL AND numCarteSauve=ptr->numCarte AND refArtSauve = ptr->refArt)
+module(TraitementArticle;;)
+enddo
+module(ClotureArticle;;)
+enddo
+module(ClotureClient;;)
+------
+
+---*InitClient
+Sortir ptr->numCarte
+numCarteSauve = ptr->numCarte
+maxQteAchetee=LV
+refArticleMaxQteAchetee=NIL
+------
+
+---*InitArticle
+refArtSauve=ptr->refArt
+qteTotaleAchetee=0
+------
+
+---*TraitementArticle
+qteTotaleAchetee+=ptr->quantite
+ptr=ptr->pSuiv
+------
+
+---*ClotureArticle
+Sortir refArtSauve, qteTotaleAchetee
+if(qteTotaleAchetee>maxQteAchetee)
+maxQteAchetee=qteTotaleAchetee
+refArticleMaxQteAchetee=refArtSauve
+endif
+------
+
+---*ClotureClient
+Sortir maxQteAchetee, refArticleMaxQteAchetee
+------

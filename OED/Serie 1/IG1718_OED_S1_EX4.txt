@@ -1,0 +1,60 @@
+---*Exercice 4 - blocs logiques
+indArticle = 0
+do while(indArticle < 100)
+module(InitialisationDepartement;;)
+do while (indArticle < 100 AND departementSauve = tabArticles[indArticle].departement)
+module(InitialisationRayon;;)
+do while (indArticle < 100 AND departementSauve = tabArticles[indArticle].departement AND rayonSauve = tabArticles[indArticle].rayon)
+module(TraitementRayon;;)
+indArticle++
+enddo
+module(ClotureRayon;;)
+enddo
+module(ClotureDepartement;;)
+enddo
+------
+
+---*InitialisationDepartement
+departementSauve = tabArticles[indArticle].departement
+indMois = 0
+do while (indMois<12)
+tabCADepartement[indMois]=0
+indMois++
+enddo
+Sortir departementSauve
+------
+
+---*InitialisationRayon
+rayonSauve = tabArticles[indArticle].rayon
+totalCARayon = 0
+Sortir rayonSauve
+------
+
+---*TraitementRayon
+indCARayon = 0
+do while (indCARayon < 12)
+// on ajoute le montant des ventes de l'article pour les 12 mois de l'année au total des ventes du rayon pour les 12 mois de l'année
+totalCARayon += tabArticles[indArticle].tabChifAffMens[indCARayon]
+// on ajoute le montant des ventes de l'article pour les 12 mois de l'année au total des ventes du département pour les 12 mois de l'année
+tabCADepartement[indCARayon]+=tabArticles[indArticle].tabChifAffMens[indCARayon]
+indCARayon++
+enddo
+------
+
+---*ClotureRayon
+Sortir "Total des ventes pour le rayon = " + totalCARayon
+------
+
+---*ClotureDepartement
+indCADepartement = 0
+maxCADepartement = LV
+indMoisMaxCADepartement = -1
+do while(indCADepartement < 12)
+if(tabCADepartement[indCADepartement]>maxCADepartement)
+maxCADepartement=tabCADepartement[indCADepartement]
+indMoisMaxCADepartement = indCADepartement
+indCADepartement++
+endif
+enddo
+// todo: sur base de l'indice, switch pour déterminer libellé du mois, puis faire les sorties nécessaires
+------

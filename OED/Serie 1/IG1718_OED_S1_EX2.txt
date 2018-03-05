@@ -1,0 +1,32 @@
+---*Série 1 - Exercice 2
+module(ObenirFiche;;fiche)
+do while (fiche!=null) 
+module(RechercherEtudiant;fiche.matricule;indiceEtudiant)
+if (indiceEtudiant<nbAbsents && tabAbsents[indiceEtudiant].matricule==fiche.matricule)
+tabAbsents[indiceEtudiant].nbAbsences++
+else
+module(AjouterEtudiantEtAbsence;fiche.nomPrenom,fiche.matricule,indiceEtudiant;)
+endif
+module(ObenirFiche;;fiche)
+enddo
+------
+
+---*RechercherEtudiant (in: matricule, out: indiceEtudiant)
+indiceEtudiant = 0
+do while (indiceEtudiant < nbAbsents && tabAbsents[indiceEtudiant].matricule < matricule)
+indiceEtudiant++
+enddo
+retourner indiceEtudiant
+------
+
+---*AjouterEtudiantEtAbsence(in: nomPrenom, matricule, indiceEtudiant)
+indiceCourant = nbAbsents
+do while (indiceCourant > indiceEtudiant)
+tabAbsents[indiceCourant] = tabAbsents[indiceCourant-1]
+indiceCourant--
+enddo
+tabAbsents[indiceEtudiant].matricule = matricule
+tabAbsents[indiceEtudiant].nomPrenom = nomPrenom
+tabAbsents[indiceEtudiant].nbAbsences = 1
+nbAbsents++
+------
