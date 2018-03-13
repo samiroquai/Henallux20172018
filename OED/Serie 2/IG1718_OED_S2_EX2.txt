@@ -1,4 +1,4 @@
----*OED - 2017-2018 - Série 2 - Ex 2
+---*OED - 2017-2018 - Série 2 - Ex 2a
 module(ObtenirOeuvre;;refOeuvre, titreOeuvre, numSalleOeuvre)
 ptrSalle=pDebSalle
 do while(ptrSalle!=NILL AND ptrSalle->numSalle<numSalleOeuvre)
@@ -31,4 +31,34 @@ endif
 endif
 endif
 endif
+------
+
+---*OED - 2017-2018 - Série 2 - Ex 2b
+module(ObtenirNumSalle;;salleASupprimer)
+ptrSalle=pDebSalle
+ptrSallePrec=NILL
+do while(ptrSalle!=NILL AND ptrSalle->numSalle<salleASupprimer)
+ptrSallePrec=ptrSalle
+ptrSalle=ptrSalle->pSalleSuiv
+enddo
+if(ptrSalle!=NIL AND ptrSalle->numSalle = salleASupprimer)
+module(SupprimerSalle;ptrSalle, ptrSallePrec;)
+endif
+-----
+
+---*SupprimerSalle
+ptrOeuvre = ptrSalle->pDebOeuvres
+do while(ptrOeuvre!=NIL)
+ptrOeuvreSauve = ptrOeuvre-=>pOeuvreSuiv
+libérer ptrOeuvre
+ptrOeuvre=ptrOeuvreSauve
+enddo
+if(ptrSallePrec!=NIL)
+// suppression en milieu ou fin de liste
+ptrSallePrec->pSalleSuiv=ptrSalle->pSalleSuiv
+else
+// suppression en début de liste
+pDebSalle=ptrSalle->pSalleSuiv
+endif
+libérer pDebSalle
 ------

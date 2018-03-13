@@ -1,0 +1,68 @@
+---*OED - 2017-2018 - Série 2 - Ex 3
+Obtenir choix
+do while (choix!='Quitter')
+if (choix='Restitution')
+module(Restitution;;)
+elseif (choix='Emprunt')
+module(Emprunt;;)
+elseif (choix='Prolongation')
+module(Prolongation;;)
+elseif (choix='Rapport')
+module(Rapport;;)
+else
+Sortir 'Choix non-reconnu. Choix supportés: Restitution, Emprunt, Prolongation, Rapport, Quitter';
+endif
+Obtenir choix
+enddo
+----
+
+---*RechercherEmprunteur(in: nomEmprunteur; out:pEmprunteur, pEmprunteurPrec)
+pEmprunteur = pDebEmpr
+pEmprunteurPrec = NIL
+do while (pEmprunteur!=NIL AND pEmprunteur->emprunteur<nomEmprunteur)
+pEmprunteurPrec = pEmprunteur
+pEmprunteur = pEmprunteur -> pSuiv
+enddo
+------
+
+---*RechercherMedia(in: titreCD; out:pMedia, pMediaPrec)
+pMedia = pEmprunteur -> pDebCD
+pMediaPrec = NIL
+do while(pMedia!=NIL AND pMedia->titre!=titreCD)
+pMediaPrec = pMedia
+pMedia = pMedia->pCDSuiv
+enddo
+------
+
+---*Restitution
+Obtenir nomEmprunteur, titreCD
+module(RechercherEmprunteur;nomEmprunteur;pEmprunteur,pEmprunteurPrec)
+if(pEmprunteur = NIL OR pEmprunteur ->emprunteur!=nomEmprunteur)
+Sortir "Emprunteur inconnu"
+else
+module(RechercherMedia;titreCD;pMedia, pMediaPrec)
+if(pMedia==NIL)
+Sortir "Le média présenté au retour n'a pas été emprunté"
+else
+if(pMediaPrec = NIL)
+pEmprunteur->pDebCD = pMedia -> pCDSuiv
+else
+pMediaPrec->pCDSuiv = pMedia -> pCDSuiv
+endif
+Libérer pMedia
+endif
+
+endif
+------
+
+---*Emprunt
+
+------
+
+---*Prolongation
+
+------
+
+---*Rapport
+
+------
