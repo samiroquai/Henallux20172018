@@ -1,4 +1,5 @@
 /*
+ * 
   In App.xaml:
   <Application.Resources>
       <vm:ViewModelLocator xmlns:vm="clr-namespace:WPFClient"
@@ -35,8 +36,8 @@ namespace WPFClient.ViewModel
             // Sans latence artificielle => 
             //SimpleIoc.Default.Register<IDataservice, APIDataService>();
             // Avec latence artificielle => 
-            SimpleIoc.Default.Register<IDataservice, APIDataServiceWrapperWithFakeLatency>();
-
+            //SimpleIoc.Default.Register<IDataservice, APIDataServiceWrapperWithFakeLatency>();
+            SimpleIoc.Default.Register<IDataservice, DatabaseDataService>();
             ////if (ViewModelBase.IsInDesignModeStatic)
             ////{
             ////    // Create design time view services and models
